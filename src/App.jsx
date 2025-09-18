@@ -3,9 +3,8 @@ import "../src/styles/main.css";
 import Home from "./pages/Home";
 import AiAdvisor from "./pages/aiAdvisor.jsx";
 import Recipes from "./pages/recipes.jsx";
-// import Nutrition from "./components/nutrition.jsx";
+// import Nutrition from "./pages/nutrition.jsx";
 import MenuPlanner from "./pages/menu.jsx";
-// import Footer from "./components/footer.jsx";
 
 export default function App() {
   return (

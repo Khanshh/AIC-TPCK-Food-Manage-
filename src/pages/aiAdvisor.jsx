@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 export default function AiAdvisor() {
-  // Lấy tin nhắn từ sessionStorage nếu có
   const [messages, setMessages] = useState(() => {
     const saved = sessionStorage.getItem("aiMessages");
     return saved
@@ -15,34 +14,57 @@ export default function AiAdvisor() {
   });
 
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // Cập nhật sessionStorage mỗi khi messages thay đổi
   useEffect(() => {
     sessionStorage.setItem("aiMessages", JSON.stringify(messages));
   }, [messages]);
 
-  // Hàm gửi tin nhắn
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!input.trim()) return;
 
+    // Thêm tin nhắn người dùng
     const newMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, newMessage]);
 
-    // Giả lập trả lời AI
-    setTimeout(() => {
-      const aiResponse = {
-        sender: "ai",
-        text: `Tôi đã nhận câu hỏi: "${input}". (AI đang suy nghĩ 🤔)`,
-      };
-      setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
+    const userQuestion = input;
+    setInput(""); // clear ô input
+    setLoading(true);
 
-    setInput(""); // clear input
+    try {
+      // Gọi API backend
+      const res = await fetch("http://localhost:3000/api/chatbot/u1", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: userQuestion }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        // Thêm tin nhắn trả lời từ AI
+        setMessages((prev) => [
+          ...prev,
+          { sender: "ai", text: data.answer || "🤖 Không có câu trả lời." },
+        ]);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "ai", text: `⚠️ Lỗi: ${data.message}` },
+        ]);
+      }
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "ai", text: `❌ Không kết nối được tới server.` },
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section className="aiAdvisor">
-      {/* Header */}
       <div className="ai-header">
         <h1>🤖 AI MealMind</h1>
         <div className="backHome" onClick={() => window.history.back()}>
@@ -53,7 +75,6 @@ export default function AiAdvisor() {
         </div>
       </div>
 
-      {/* Vùng chat */}
       <div className="chat-container">
         {messages.map((msg, index) => (
           <div
@@ -65,9 +86,12 @@ export default function AiAdvisor() {
             {msg.sender === "ai" ? "🤖 " : "🧑 "} {msg.text}
           </div>
         ))}
+
+        {loading && (
+          <div className="chat-message ai-message">🤖 Đang suy nghĩ...</div>
+        )}
       </div>
 
-      {/* Input + Gửi */}
       <div className="chat-input">
         <input
           type="text"
@@ -75,8 +99,9 @@ export default function AiAdvisor() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          disabled={loading}
         />
-        <button onClick={sendMessage}>
+        <button onClick={sendMessage} disabled={loading}>
           <i className="fa-solid fa-paper-plane"></i>
         </button>
       </div>
