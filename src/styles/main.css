@@ -1247,6 +1247,74 @@ details summary {
   margin: 2px 0;
 }
 
+.recipesPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 0 40px;
+  background: #f4fbf2;
+}
+
+.recipes-header h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d5016;
+}
+
+.recipes-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.recipes-filters input[type="number"] {
+  width: 160px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-fetch {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.recipes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card h3 {
+  margin-bottom: 6px;
+  color: #388e3c;
+}
+
+.subs-list {
+  margin-top: 10px;
+  background: #f8f8f8;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
