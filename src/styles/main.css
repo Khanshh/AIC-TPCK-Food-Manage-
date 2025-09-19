@@ -1059,6 +1059,193 @@ details summary {
     font-size: 16px;
   }
 }
+/* Nutrition Section */
+.nutrition {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px 40px;
+  font-family: "Nunito", sans-serif;
+  color: #2d5016;
+}
+
+/* Header */
+.nutrition h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #16843f;
+}
+
+/* Profile List */
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-item.active {
+  border: 2px solid #4ad27c;
+  background: #e6f7eb;
+}
+
+.profile-item span {
+  font-weight: 500;
+}
+
+.profile-item button {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-item button:hover {
+  background: #d84747;
+}
+
+.profile-list > button {
+  background: #4ad27c;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-list > button:hover {
+  background: linear-gradient(to right, #4ad27c, #16843f);
+}
+
+/* Profile Form */
+.profile-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.profile-form label {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;
+  font-weight: 500;
+}
+
+.profile-form input,
+.profile-form select {
+  padding: 6px 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.profile-form button {
+  background: #4ad27c;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-form button:hover {
+  background: linear-gradient(to right, #4ad27c, #16843f);
+}
+
+/* Metrics */
+.metrics {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.metrics h3 {
+  color: #4ad27c;
+  margin-bottom: 10px;
+}
+
+.metrics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.metrics li {
+  margin: 4px 0;
+}
+
+.metrics button {
+  margin-top: 10px;
+  background: #4ad27c;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.metrics button:hover {
+  background: linear-gradient(to right, #4ad27c, #16843f);
+}
+
+/* Gợi ý món ăn */
+.menu-plan {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.menu-plan h3 {
+  color: #4ad27c;
+  margin-bottom: 12px;
+}
+
+.plan-day {
+  margin-bottom: 15px;
+}
+
+.plan-day h4 {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.plan-day ul {
+  list-style: none;
+  padding: 0;
+}
+
+.plan-day li {
+  margin: 2px 0;
+}
 
 /* Animations */
 @keyframes fadeInUp {
