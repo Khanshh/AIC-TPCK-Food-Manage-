@@ -98,7 +98,15 @@ export default function Nutrition() {
 
   return (
     <section className="nutrition">
-      <h1>Nutrition</h1>
+      <div className="menu-header">
+        <h1>Quay lại</h1>
+        <div className="backHome" onClick={() => window.history.back()}>
+          <i className="fa-solid fa-chevron-left"></i>
+        </div>
+        <div className="goHome" onClick={() => (window.location.href = "/")}>
+          🏠 Trang chủ
+        </div>
+      </div>
 
       {/* Form chỉnh sửa hồ sơ */}
       <div className="profile-form">
